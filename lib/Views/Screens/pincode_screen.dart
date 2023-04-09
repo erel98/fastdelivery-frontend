@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:fastdelivery/Controllers/Services/delivery_service.dart';
 import 'package:fastdelivery/constraints.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

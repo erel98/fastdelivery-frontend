@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:fastdelivery/Controllers/Services/user_service.dart';
 import 'package:fastdelivery/Views/Screens/main_screen.dart';
-import 'package:fastdelivery/global.dart';
 import 'package:fastdelivery/preferences_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';

@@ -1,10 +1,8 @@
 import 'dart:convert';
 import 'package:fastdelivery/Controllers/Services/http_service.dart';
-import 'package:fastdelivery/Models/api_response.dart';
 import 'package:fastdelivery/preferences_controller.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import '../../Models/User.dart';
@@ -52,7 +50,6 @@ class UserService {
           age: jsonResponse['age'],
           gender: jsonResponse['gender'],
           mobile: jsonResponse['mobile'],
-          imageUrl: jsonResponse['imageUrl'],
           username: jsonResponse['username'],
           email: jsonResponse['email']);
     });

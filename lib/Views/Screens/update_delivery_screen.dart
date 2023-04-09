@@ -1,12 +1,10 @@
 import 'package:fastdelivery/Controllers/Services/delivery_service.dart';
-import 'package:fastdelivery/Views/Screens/main_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../Controllers/Providers/delivery_provider.dart';
 import '../../Models/delivery.dart';
-import '../../global.dart';
 
 class UpdateDeliveryStatusScreen extends StatefulWidget {
   static const routeName = '/update-delivery';

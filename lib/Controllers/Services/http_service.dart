@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:fastdelivery/global.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;

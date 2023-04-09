@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:fastdelivery/Controllers/Services/user_service.dart';
 import 'package:fastdelivery/Views/Screens/create_availability_screen.dart';
 import 'package:fastdelivery/Views/Widgets/availability_widget.dart';
 import 'package:fastdelivery/Views/Widgets/delivery_widget.dart';

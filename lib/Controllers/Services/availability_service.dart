@@ -1,13 +1,7 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:fastdelivery/Models/availability.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
-import '../../Models/api_response.dart';
 import 'http_service.dart';
 
 class AvailabilityService {

@@ -1,5 +1,4 @@
 import 'package:fastdelivery/Controllers/Providers/availability_provider.dart';
-import 'package:fastdelivery/Models/availability.dart';
 import 'package:fastdelivery/global.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

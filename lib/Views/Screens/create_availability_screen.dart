@@ -1,5 +1,4 @@
 import 'package:fastdelivery/Controllers/Providers/availability_provider.dart';
-import 'package:fastdelivery/Controllers/Services/availability_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
