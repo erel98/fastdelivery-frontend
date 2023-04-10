@@ -21,4 +21,9 @@ class AvailabilityProvider with ChangeNotifier {
         availability;
     notifyListeners();
   }
+
+  void deleteAvailability(String id) {
+    availabilities.removeWhere((element) => element.id == id);
+    notifyListeners();
+  }
 }

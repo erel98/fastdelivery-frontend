@@ -1,4 +1,5 @@
 import 'package:fastdelivery/Controllers/Providers/availability_provider.dart';
+import 'package:fastdelivery/Controllers/Services/availability_service.dart';
 import 'package:fastdelivery/global.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -27,6 +28,7 @@ class _AvailabilityWidgetState extends State<AvailabilityWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final mq = MediaQuery.of(context).size;
     final availabilityData = Provider.of<AvailabilityProvider>(context);
     final av = availabilityData.availabilities;
     av.sort((a, b) {
@@ -38,23 +40,42 @@ class _AvailabilityWidgetState extends State<AvailabilityWidget> {
     });
     return av.isEmpty
         ? const Center(child: Text('You don\'t have any availabilities'))
-        : ListView.separated(
+        : ListView.builder(
             itemBuilder: ((BuildContext context, index) {
               return Container(
+                margin: const EdgeInsets.only(bottom: 10),
                 color: isToday(av[index].dayOfWeek)
                     ? Colors.greenAccent
                     : Colors.white,
                 child: ListTile(
-                  title: Text(Global.getWeekDay(av[index].dayOfWeek)),
-                  trailing: Text('${av[index].fromTime} - ${av[index].toTime}'),
+                  leading: SizedBox(
+                      width: mq.width * 0.4,
+                      child: Text(Global.getWeekDay(av[index].dayOfWeek))),
+                  title: SizedBox(
+                      width: mq.width * 0.4,
+                      child:
+                          Text('${av[index].fromTime} - ${av[index].toTime}')),
+                  trailing: SizedBox(
+                    width: mq.width * 0.2,
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
+                      onPressed: () async {
+                        await AvailabilityService.deleteAvailability(
+                                av[index].id)
+                            .then((success) {
+                          if (success) {
+                            availabilityData.deleteAvailability(av[index].id);
+                          }
+                        });
+                      },
+                    ),
+                  ),
                 ),
               );
             }),
-            separatorBuilder: (BuildContext context, int index) {
-              return const Divider(
-                color: Colors.black,
-              );
-            },
             itemCount: av.length);
   }
 }

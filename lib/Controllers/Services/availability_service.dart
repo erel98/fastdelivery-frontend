@@ -73,4 +73,15 @@ class AvailabilityService {
 
     return availability;
   }
+
+  static Future<bool> deleteAvailability(String id) async {
+    var url = '${dotenv.get('API_URL')}/availability/delete/$id';
+    var body = {};
+    bool success = false;
+    await HTTPService.httpPOST(url, body, appendToken: true).then((response) {
+      success = response.body['success'];
+      return success;
+    });
+    return success;
+  }
 }
