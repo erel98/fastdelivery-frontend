@@ -3,9 +3,8 @@ import 'dart:convert';
 import 'package:fastdelivery/Controllers/Services/user_service.dart';
 import 'package:fastdelivery/Views/Widgets/profile_textfield.dart';
 import 'package:fastdelivery/preferences_controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import '../../Models/User.dart';
 import '../../constraints.dart';
@@ -104,9 +103,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   };
                   var success = await UserService.updateMe(params);
                   if (success) {
-                    Fluttertoast.showToast(msg: 'Success');
+                    EasyLoading.showSuccess('Success');
                   } else {
-                    Fluttertoast.showToast(msg: 'Failure');
+                    EasyLoading.showError('Failure');
                   }
                 },
                 child: const Text(
