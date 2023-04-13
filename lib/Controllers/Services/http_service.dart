@@ -57,7 +57,6 @@ class HTTPService {
           .post(uri, headers: headers, body: jsonEncode(body))
           .then((http.Response response) {
         Map<String, dynamic> decodedResponse = jsonDecode(response.body);
-        print(response.body);
         API_Response api_response =
             API_Response(status: response.statusCode, body: decodedResponse);
         EasyLoading.dismiss();

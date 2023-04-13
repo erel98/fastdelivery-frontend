@@ -58,13 +58,11 @@ class UserService {
 
   static Future<bool> updateMe(Map<String, dynamic> params) async {
     var url = '${dotenv.get('API_URL')}/updateMe';
-
+    var success = false;
     await HTTPService.httpPOST(url, params, appendToken: true).then((response) {
-      if (response.status == 200) {
-        return true;
-      }
+      success = response.body['success'];
     });
 
-    return false;
+    return success;
   }
 }
