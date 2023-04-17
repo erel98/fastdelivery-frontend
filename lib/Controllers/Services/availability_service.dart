@@ -30,11 +30,12 @@ class AvailabilityService {
     var url = '${dotenv.get('API_URL')}/availability/create';
     await HTTPService.httpPOST(url, params, appendToken: true).then((response) {
       if (response.status == 200) {
+        var body = response.body;
         availability = Availability(
-          id: params['id'],
-          dayOfWeek: params['dayOfWeek'],
-          fromTime: params['fromTime'],
-          toTime: params['toTime'],
+          id: body['id'],
+          dayOfWeek: body['dayOfWeek'],
+          fromTime: body['fromTime'],
+          toTime: body['toTime'],
         );
       }
     });

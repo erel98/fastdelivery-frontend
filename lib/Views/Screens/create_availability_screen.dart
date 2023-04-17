@@ -89,11 +89,11 @@ class _CreateAvailabilityState extends State<CreateAvailability> {
                   useMagnifier: true,
                   itemExtent: 32,
                   scrollController: FixedExtentScrollController(
-                      initialItem: DateTime.now().weekday),
+                      initialItem: DateTime.now().weekday - 1),
                   // This is called when selected item is changed.
                   onSelectedItemChanged: (int selectedItem) {
                     setState(() {
-                      selectedDayOfWeek = selectedItem;
+                      selectedDayOfWeek = selectedItem + 1;
                     });
                   },
                   children: List<Widget>.generate(days.length, (int index) {
@@ -169,7 +169,7 @@ class _CreateAvailabilityState extends State<CreateAvailability> {
           child: const Text('Save'),
           onPressed: () async {
             var params = {
-              'dayOfWeek': selectedDayOfWeek,
+              'dayOfWeek': selectedDayOfWeek - 1,
               'fromTime': buildTimeString(fromTime),
               'toTime': buildTimeString(toTime),
             };
