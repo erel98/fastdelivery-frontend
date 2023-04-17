@@ -191,7 +191,8 @@ class _DeliveryWidgetState extends State<DeliveryWidget> {
                                             width: 10,
                                           ),
                                           Text(
-                                            item.delivery.customerInfo['phone'],
+                                            item.delivery
+                                                .customerInfo['number'],
                                           ),
                                         ],
                                       ),

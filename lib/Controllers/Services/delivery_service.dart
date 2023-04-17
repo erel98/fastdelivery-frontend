@@ -59,7 +59,6 @@ class DeliveryService {
     var url = '${dotenv.get('REQUESTING_APP_URL')}/verify-order-code';
     await HTTPService.httpPOST(url, body).then((response) {
       var element = response.body;
-      print(response.body);
       String message = element['message'];
       if (message.contains('not')) {
         isCorrect = false;
