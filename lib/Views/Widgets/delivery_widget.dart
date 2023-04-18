@@ -22,6 +22,7 @@ class _DeliveryWidgetState extends State<DeliveryWidget> {
         Provider.of<DeliveryProvider>(context, listen: false);
     await deliveryProvider.getDeliveries(context);
     final deliveries = deliveryProvider.deliveries;
+    deliveries.sort((a, b) => b.createDate.compareTo(a.createDate));
     deliveries.forEach((element) {
       _data.add(generateItem(element));
     });

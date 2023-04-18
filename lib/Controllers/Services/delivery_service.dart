@@ -12,19 +12,7 @@ class DeliveryService {
     await HTTPService.httpGET(url, appendToken: true).then((response) {
       var jsonResponse = jsonDecode(response.body) as List<dynamic>;
       jsonResponse.forEach((element) {
-        //print(element['customer_info']);
-        var delivery = Delivery(
-            id: element['id'],
-            origin: element['origin'],
-            destination: element['destination'],
-            dimensions: element['dimensions'],
-            weight: int.parse(element['weight']),
-            orderNr: element['order_nr'],
-            status: element['delivery_status'],
-            type: element['type'],
-            riderID: element['rider_id'],
-            customerInfo: element['customer_info'],
-            comment: element['comment'] ?? '');
+        var delivery = Delivery.fromJson(element);
         deliveries.add(delivery);
       });
     });
@@ -37,19 +25,7 @@ class DeliveryService {
     var url = '${dotenv.get('API_URL')}/delivery/$id';
     await HTTPService.httpPOST(url, body, appendToken: true).then((response) {
       var element = response.body;
-      //print(element);
-      delivery = Delivery(
-          id: element['id'],
-          origin: element['origin'],
-          destination: element['destination'],
-          dimensions: element['dimensions'],
-          weight: int.parse(element['weight']),
-          orderNr: element['order_nr'],
-          status: element['delivery_status'],
-          type: element['type'],
-          riderID: element['rider_id'],
-          customerInfo: element['customer_info'],
-          comment: element['comment'] ?? '');
+      delivery = Delivery.fromJson(element);
     });
     return delivery;
   }

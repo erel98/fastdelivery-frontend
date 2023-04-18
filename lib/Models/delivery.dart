@@ -1,5 +1,6 @@
 class Delivery {
   String id;
+  DateTime createDate;
   String status;
   String origin;
   String destination;
@@ -13,6 +14,7 @@ class Delivery {
 
   Delivery(
       {required this.id,
+      required this.createDate,
       required this.status,
       required this.origin,
       required this.destination,
@@ -27,31 +29,33 @@ class Delivery {
   factory Delivery.fromJson(Map<String, dynamic> parsedJson) {
     return Delivery(
       id: parsedJson['id'] ?? "",
-      status: parsedJson['status'] ?? "",
+      createDate: DateTime.parse(parsedJson['created_at']),
+      status: parsedJson['delivery_status'] ?? "",
       origin: parsedJson['origin'] ?? "",
       destination: parsedJson['destination'] ?? 0,
-      orderNr: parsedJson['orderNr'] ?? 0,
-      weight: parsedJson['weight'] ?? 0,
+      orderNr: parsedJson['order_nr'] ?? '',
+      weight: parsedJson['weight'],
       dimensions: parsedJson['dimensions'] ?? 0,
       type: parsedJson['type'] ?? 0,
-      customerInfo: parsedJson['customerInfo'] ?? 0,
-      riderID: parsedJson['riderID'] ?? 0,
-      comment: parsedJson['comment'] ?? 0,
+      customerInfo: parsedJson['customer_info'] ?? {},
+      riderID: parsedJson['rider_id'] ?? '',
+      comment: parsedJson['comment'] ?? '',
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'status': status,
+      'created_at': createDate.toString(),
+      'delivery_status': status,
       'origin': origin,
       'destination': destination,
-      'orderNr': orderNr,
+      'order_nr': orderNr,
       'weight': weight,
       'dimensions': dimensions,
       'type': type,
-      'customerInfo': customerInfo,
-      'riderID': riderID,
+      'customer_info': customerInfo,
+      'rider_id': riderID,
       'comment': comment,
     };
   }
